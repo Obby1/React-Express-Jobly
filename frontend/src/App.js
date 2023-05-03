@@ -79,8 +79,16 @@ function App() {
     setCurrentUser(updatedUser);
   }
 
+  async function applyForJob(jobId) {
+    if (currentUser) {
+      await JoblyApi.applyToJob(currentUser.username, jobId);
+      const updatedUser = await JoblyApi.getCurrentUser(currentUser.username);
+      setCurrentUser(updatedUser);
+    }
+  }
+
   return (
-    <UserContext.Provider value={{ currentUser, updateCurrentUser }}>
+    <UserContext.Provider value={{ currentUser, updateCurrentUser, applyForJob }}>
       <div className="App">
         <Router>
           <Navbar currentUser={currentUser} logout={logout} />
