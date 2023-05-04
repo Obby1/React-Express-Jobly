@@ -14,6 +14,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import jwt_decode from "jwt-decode"
 import useLocalStorage from './hooks/useLocalStorage';
 import Protected from './components/Protected';
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import jwt_decode from "jwt-decode";
 // import { SECRET_KEY } from "../backend/config";
 

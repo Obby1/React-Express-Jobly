@@ -2,6 +2,9 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { UserContext } from '../App';
 import JoblyApi from '../api';
+import JobCard from './JobCard';
+
+// update this to display card
 
 function JobDetail() {
     const [job, setJob] = useState(null);
@@ -19,16 +22,17 @@ function JobDetail() {
 
     if (!job) return <div>Loading...</div>;
 
-    const isApplied = currentUser?.jobs?.some((appliedJob) => appliedJob.id === job.id);
-
     return (
         <div>
-            <h2>{job.title}</h2>
+
+            <JobCard key={job.id} job={job} />
+
+            {/* <h2>{job.title}</h2>
             <p>Salary: {job.salary}</p>
             <p>Equity: {job.equity}</p>
             <button onClick={() => applyForJob(job.id)} disabled={isApplied}>
                 {isApplied ? 'Applied' : 'Apply'}
-            </button>
+            </button> */}
         </div>
     );
 }

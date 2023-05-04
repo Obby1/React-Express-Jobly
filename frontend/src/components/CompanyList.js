@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import JoblyApi from '../api';
 import CompanyCard from './CompanyCard';
+import { Container, Row, Col, ListGroup } from 'react-bootstrap';
+
 
 function CompanyList() {
     const [companies, setCompanies] = useState([]);
@@ -27,24 +29,32 @@ function CompanyList() {
     }
 
     return (
-        <div>
-            <h2>Companies</h2>
-            <input
-                type="text"
-                placeholder="Search companies"
-                value={searchTerm}
-                onChange={handleSearch}
-            />
-            {companies.length === 0 ? (
-                <div>
-                    <h2>No Results</h2>
-                </div>
-            ) : (
-                companies.map(company => (
-                    <CompanyCard key={company.handle} company={company} />
-                ))
-            )}
-        </div>
+        <Container>
+            <Row>
+                <Col>
+                    <div>
+                        <h2>Companies</h2>
+                        <input
+                            type="text"
+                            placeholder="Search companies"
+                            value={searchTerm}
+                            onChange={handleSearch}
+                        />
+                        {companies.length === 0 ? (
+                            <div>
+                                <h2>No Results</h2>
+                            </div>
+                        ) : (
+                            <ListGroup>
+                                {companies.map(company => (
+                                    <CompanyCard key={company.handle} company={company} />
+                                ))}
+                            </ListGroup>
+                        )}
+                    </div>
+                </Col>
+            </Row>
+        </Container>
     );
 }
 

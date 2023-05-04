@@ -2,12 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../App';
 import JoblyApi from '../api';
-
-// 5.3.23 save spot:
-// unapply only shows on hard refresh
-// server error on un apply ()
-// manually test API with Insomnia to delete job apps. 
-// check code 
+import { Card, Button } from 'react-bootstrap';
 
 function JobCard({ job }) {
     const { currentUser, updateCurrentUser } = useContext(UserContext);
@@ -43,18 +38,24 @@ function JobCard({ job }) {
     // const isApplied = currentUser?.jobs?.some((appliedJob) => appliedJob.id === job.id);
 
     return (
-        <div className="JobCard">
-            <h4>
-                <Link to={`/jobs/${job.id}`}>{job.title}</Link>
-            </h4>
-            <p>Salary: {job.salary}</p>
-            <p>Equity: {job.equity}</p>
-            {isApplied ? (
-                <button onClick={handleUnapply}>Un-apply</button>
-            ) : (
-                <button onClick={handleApply}>Apply</button>
-            )}
-        </div>
+        <Card className="JobCard mb-3">
+            <Card.Body>
+                <Card.Title>
+                    <Link to={`/jobs/${job.id}`}>{job.title}</Link>
+                </Card.Title>
+                <Card.Text>Salary: {job.salary}</Card.Text>
+                <Card.Text>Equity: {job.equity}</Card.Text>
+                {isApplied ? (
+                    <Button variant="danger" onClick={handleUnapply}>
+                        Un-apply
+                    </Button>
+                ) : (
+                    <Button variant="primary" onClick={handleApply}>
+                        Apply
+                    </Button>
+                )}
+            </Card.Body>
+        </Card>
     );
 }
 

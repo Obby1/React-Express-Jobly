@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import JoblyApi from '../api';
 import JobCard from './JobCard';
+import { Container, Row, Col, ListGroup } from 'react-bootstrap';
 
 function JobList() {
     const [jobs, setJobs] = useState([]);
@@ -21,28 +22,34 @@ function JobList() {
     }
 
     return (
-        <div>
-            <h2>Jobs</h2>
-            <input
-                type="text"
-                placeholder="Search jobs"
-                value={searchTerm}
-                onChange={handleSearch}
-            />
-            {
-
-                jobs.length === 0 ? (
+        <Container>
+            <Row>
+                <Col>
                     <div>
-                        <h2>No Results</h2>
+                        <h2>Jobs</h2>
+                        <input
+                            type="text"
+                            placeholder="Search jobs"
+                            value={searchTerm}
+                            onChange={handleSearch}
+                        />
+                        {
+                            jobs.length === 0 ? (
+                                <div>
+                                    <h2>No Results</h2>
+                                </div>
+                            ) : (
+                                <ListGroup>
+                                    {jobs.map(job => (
+                                        <JobCard key={job.id} job={job} />
+                                    ))}
+                                </ListGroup>
+                            )
+                        }
                     </div>
-                ) : (
-                    jobs.map(job => (
-                        <JobCard key={job.id} job={job} />
-                    ))
-                )
-
-            }
-        </div>
+                </Col>
+            </Row>
+        </Container>
     );
 }
 
