@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import JoblyApi from '../api';
 import JobCard from './JobCard';
+import '../css/JobList.css'
 import { Container, Row, Col, ListGroup } from 'react-bootstrap';
 
 function JobList() {
@@ -32,6 +33,7 @@ function JobList() {
                             placeholder="Search jobs"
                             value={searchTerm}
                             onChange={handleSearch}
+                            className="search-input"
                         />
                         {
                             jobs.length === 0 ? (

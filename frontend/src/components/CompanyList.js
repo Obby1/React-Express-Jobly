@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import JoblyApi from '../api';
 import CompanyCard from './CompanyCard';
 import { Container, Row, Col, ListGroup } from 'react-bootstrap';
+import '../css/CompanyList.css'
+
 
 
 function CompanyList() {
@@ -13,10 +15,10 @@ function CompanyList() {
             try {
                 const params = searchTerm ? { name: searchTerm } : {};
                 const response = await JoblyApi.getCompanies(params);
-                // console.log(response);
                 setCompanies(response);
             } catch (error) {
-                // Handle error
+                alert(`error! Please notify the developer. Details: ${error}`)
+                console.log(error)
             }
 
         }
@@ -39,7 +41,9 @@ function CompanyList() {
                             placeholder="Search companies"
                             value={searchTerm}
                             onChange={handleSearch}
+                            className="search-input"
                         />
+
                         {companies.length === 0 ? (
                             <div>
                                 <h2>No Results</h2>

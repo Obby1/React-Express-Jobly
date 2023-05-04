@@ -38,7 +38,7 @@ function JobCard({ job }) {
     // const isApplied = currentUser?.jobs?.some((appliedJob) => appliedJob.id === job.id);
 
     return (
-        <Card className="JobCard mb-3">
+        <Card className="JobCard mb-3" style={{ backgroundColor: 'rgba(255, 255, 255, 0.4)' }}>
             <Card.Body>
                 <Card.Title>
                     <Link to={`/jobs/${job.id}`}>{job.title}</Link>

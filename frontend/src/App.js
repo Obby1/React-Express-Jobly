@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
-import './App.css';
+// import './App.css';
+import './css/App.css'
 import CompanyList from './components/CompanyList';
 import Navbar from './components/Navbar';
 import Homepage from './components/Homepage';

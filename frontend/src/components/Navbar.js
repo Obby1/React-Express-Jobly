@@ -10,7 +10,7 @@ function Navbar({ currentUser, logout }) {
                 <Nav className="mx-auto">
                     {currentUser && (
                         <>
-                            <NavLink className="navbar-brand" exact to="/">Home</NavLink>
+                            <NavLink className="navbar-brand" to="/">Home</NavLink>
                             <NavLink className="nav-link" to="/companies">Companies</NavLink>
                             <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
                             <NavLink className="nav-link" to="/profile">Profile</NavLink>
@@ -19,7 +19,7 @@ function Navbar({ currentUser, logout }) {
                     )}
                     {!currentUser && (
                         <>
-                            <NavLink className="navbar-brand" exact to="/">Home</NavLink>
+                            <NavLink className="navbar-brand" to="/">Home</NavLink>
                             <NavLink className="nav-link" to="/login">Login</NavLink>
                             <NavLink className="nav-link" to="/signup">Signup</NavLink>
                         </>
