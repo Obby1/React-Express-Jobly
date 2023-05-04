@@ -1,15 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { UserContext } from '../App';
 import JoblyApi from '../api';
 import JobCard from './JobCard';
-
-// update this to display card
 
 function JobDetail() {
     const [job, setJob] = useState(null);
     const { id } = useParams();
-    const { currentUser, applyForJob } = useContext(UserContext);
 
     useEffect(() => {
         async function fetchJob() {
@@ -24,15 +20,7 @@ function JobDetail() {
 
     return (
         <div>
-
             <JobCard key={job.id} job={job} />
-
-            {/* <h2>{job.title}</h2>
-            <p>Salary: {job.salary}</p>
-            <p>Equity: {job.equity}</p>
-            <button onClick={() => applyForJob(job.id)} disabled={isApplied}>
-                {isApplied ? 'Applied' : 'Apply'}
-            </button> */}
         </div>
     );
 }
